@@ -1,0 +1,76 @@
+# Configuration du site
+title: Cours Maths pour la physique
+description: Cours et exemple de code
+baseurl: ""
+url: ""
+
+# Thème
+theme: jekyll-theme-cayman
+# Alternatives populaires:
+# - jekyll-theme-minimal
+# - jekyll-theme-slate
+# - jekyll-theme-modernist
+
+# Configuration de la navigation
+collections:
+  cours:
+    output: true
+    permalink: /cours/:path/
+
+# Paramètres par défaut
+defaults:
+  - scope:
+      path: "COURS"
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: "CODE"
+    values:
+      layout: "default"
+
+# Ordre de tri des fichiers
+# Les fichiers seront automatiquement triés par nom de fichier
+include:
+  - COURS
+  - CODE
+
+# Exclusions
+exclude:
+  - README.md
+  - .gitignore
+  - Gemfile
+  - Gemfile.lock
+
+# Paramètres Markdown
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+
+# Plugins (activés automatiquement sur GitHub Pages)
+plugins:
+  - jekyll-relative-links
+  - jekyll-optional-front-matter
+  - jekyll-readme-index
+  - jekyll-titles-from-headings
+
+# Configuration pour jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: true
+
+# Configuration pour jekyll-titles-from-headings
+titles_from_headings:
+  enabled: true
+  strip_title: true
+  collections: true
+
+# Paramètres de pagination (optionnel)
+# paginate: 10
+# paginate_path: "/page:num/"
+
+# Configuration de la langue
+lang: fr
