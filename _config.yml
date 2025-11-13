@@ -35,7 +35,6 @@ exclude:
   - .gitignore
   - Gemfile
   - Gemfile.lock
-  - COURS.zip
   - "**/__MACOSX"
 
 # Paramètres Markdown
