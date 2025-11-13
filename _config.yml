@@ -1,17 +1,13 @@
 # Configuration du site
-title: Cours Maths pour la physique
-description: Cours et exemple de code
-baseurl: ""
+title: Cours de Physique 2D
+description: Cours et code source sur la simulation physique en 2D
+baseurl: "/ESGI_Course_2D_physics"
 url: ""
 
 # Thème
 theme: jekyll-theme-cayman
-# Alternatives populaires:
-# - jekyll-theme-minimal
-# - jekyll-theme-slate
-# - jekyll-theme-modernist
 
-# Configuration de la navigation
+# Configuration des collections
 collections:
   cours:
     output: true
@@ -21,7 +17,6 @@ collections:
 defaults:
   - scope:
       path: "COURS"
-      type: "pages"
     values:
       layout: "default"
   - scope:
@@ -29,8 +24,7 @@ defaults:
     values:
       layout: "default"
 
-# Ordre de tri des fichiers
-# Les fichiers seront automatiquement triés par nom de fichier
+# Inclusions
 include:
   - COURS
   - CODE
@@ -41,6 +35,8 @@ exclude:
   - .gitignore
   - Gemfile
   - Gemfile.lock
+  - COURS.zip
+  - "**/__MACOSX"
 
 # Paramètres Markdown
 markdown: kramdown
@@ -50,7 +46,7 @@ kramdown:
   syntax_highlighter_opts:
     css_class: 'highlight'
 
-# Plugins (activés automatiquement sur GitHub Pages)
+# Plugins
 plugins:
   - jekyll-relative-links
   - jekyll-optional-front-matter
@@ -67,10 +63,6 @@ titles_from_headings:
   enabled: true
   strip_title: true
   collections: true
-
-# Paramètres de pagination (optionnel)
-# paginate: 10
-# paginate_path: "/page:num/"
 
 # Configuration de la langue
 lang: fr
