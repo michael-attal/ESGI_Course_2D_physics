@@ -1,4 +1,4 @@
-![[medias/11 spring force 2025-11-10 11.52.43.excalidraw]]
+![[medias/11 spring force 2025-11-10 11.52.43.excalidraw|800]]
 
 ### Code de la fonction spring force
 
@@ -48,6 +48,58 @@ for(int i= 0; i< NUM_PARTICLES; i++)
 ```
 
 ![[medias/11 spring force-20251110.png]]
+
+### Multiple particles: soft body
+
+![[medias/11 spring force 2025-11-10 12.14.07.excalidraw]]
+
+```cpp
+Vec2 ab = Force::GenerateSpingForce(
+		*particles[0],
+		*particles[1],
+		restLength, k); // a<->b
+particles[0]->addForce(ab);
+particles[1]->addForce(-ab);
+
+Vec2 bc = Force::GenerateSpingForce(
+		*particles[1],
+		*particles[2],
+		restLength, k); // b<->c
+particles[1]->addForce(bc);
+particles[2]->addForce(-bc);
+
+Vec2 cd = Force::GenerateSpingForce(
+		*particles[2],
+		*particles[3],
+		restLength, k); // c<->d
+particles[2]->addForce(cd);
+particles[3]->addForce(-cd);
+
+Vec2 da = Force::GenerateSpingForce(
+		*particles[3],
+		*particles[0],
+		restLength, k); // d<->a
+particles[3]->addForce(da);
+particles[0]->addForce(-da);
+
+Vec2 ac = Force::GenerateSpingForce(
+		*particles[0],
+		*particles[2],
+		restLength, k); // a<->c
+particles[0]->addForce(ac);
+particles[2]->addForce(-ac);
+
+Vec2 bd = Force::GenerateSpingForce(
+		*particles[1],
+		*particles[3],
+		restLength, k); // b<->d
+particles[1]->addForce(bd);
+particles[3]->addForce(-bd);
+```
+
+![[medias/11 spring force-20251110-1.png|800]]
+
+
 
 
 
