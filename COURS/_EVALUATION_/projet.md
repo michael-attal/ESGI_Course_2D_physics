@@ -17,6 +17,8 @@ Des pistes de projets incluent, sans s’y limiter :
 - un **simulateur de ressorts** ou de **soft-body** ;
 - une **simulation de particules interactives** ;
 - un **petit moteur de jeu physique** avec personnages et obstacles ;
+- un **badaboum**
+- 
     
     
 

@@ -1,13 +1,17 @@
-**Moment of Inertia for Different Shapes**
+# Moment of Inertia for Different Shapes  
+Le *moment d’inertie* représente l’équivalent de la masse (*mass*) mais appliqué à la rotation. Il indique la difficulté qu’un objet rencontre lorsqu’il doit modifier sa vitesse de rotation, ce qui explique pourquoi il est parfois désigné comme *angular mass* (masse angulaire).  
+#physics/inertia, #physics/angular-mass
 
-We just learned that the _moment of inertia_ is the equivalent of _mass_, but for rotation. The moment of inertia of an object tells how hard it is for that object to change its rotation, and this is why you'll see people call it _"angular mass."_
+# 2D vs 3D  
+Ce principe est valable en 2D comme en 3D. Toutefois, en 3D, le moment d’inertie nécessite une matrice — le *tenseur d’inertie* (*inertia tensor*) — car la résistance à la rotation dépend de l’axe choisi. En 2D, un simple scalaire suffit, ce qui simplifie considérablement les calculs.  
+#physics/2d, #physics/3d
 
-This is true for both 2D and 3D objects, but 2D moment of inertia is a lot simpler than 3D, since in 3-dimensions we need a matrix to represent different inertia values for different axis.
-
-The animation below was created by Lucas Vieira (public domain, Wikipedia). Pay attention how different shapes end up with different rotation speeds.
+# Différences entre les formes  
+L’animation suivante, réalisée par Lucas Vieira (domaine public, Wikipédia), montre que différentes formes — cylindre plein, cylindre creux, disque plein, etc. — acquièrent des vitesses de rotation différentes lorsqu’elles roulent le long d’un plan incliné.  
+#physics/shapes, #physics/moment-of-inertia
 
 ![[medias/moment-of-inertia-lucasvieira.gif]]
 
-Here we can see how different shapes (solid cylinder, hollow cylinder, solid circle, etc.) behave differently when they rotate down the plane.
-
-This is the _moment of inertia_ in action, which takes into account the shape and also the mass of each object.
+# Influence de la masse et de la forme  
+Ce comportement distinct illustre l’action du *moment d’inertie*, qui dépend à la fois de la géométrie de l’objet et de la répartition de sa masse. Deux objets de même masse mais de forme différente ne réagiront pas de la même manière lors d’une rotation.  
+#physics/inertia, #physics/mass

@@ -1,13 +1,40 @@
-**Angular Velocity Direction**
+# Angular Velocity Direction
 
-You just saw that we are storing the angular velocity as a single scalar float value in our code. I just want to take some time to explain the reasoning behind this value and also reflect on the direction of this angular velocity.
+- L’angular velocity est stockée comme un scalaire (`float`) dans notre moteur physique.  
+- Cette décision simplifie le calcul en 2D tout en respectant la direction de rotation.
 
-If we were talking about objects in 3 dimensions, the angular velocity would be a 3D vector. This _angular velocity_ vector would be **_perpendicular_** to the _linear velocity_ vector.
+---
 
-![[medias/angular3d.png]]
+## 3D Perspective
 
-Since we are implementing a 2D physics engine and our linear velocity is a 2D vector defined only on the _x-y_ plane, the angular velocity is a vector in the **_z_** direction (since our objects rotate around their center of mass). We could try to imagine that the direction of this angular velocity as pointing inside the screen.
+- Dans un espace **3D**, l’angular velocity est un **vecteur 3D** :  
+  - Perpendiculaire au vecteur de vitesse linéaire.  
+  - Représente la rotation autour d’un axe.  
 
-![[medias/angular2d.png]]
+![[medias/angular3d.png]]  
 
-And this is why, for simplicity, our implementation stores the angular velocity as a simple scalar/float representing the _z-component_ **magnitude** of this vector.
+---
+
+## 2D Implementation
+
+- Pour un moteur 2D :  
+  - Vitesse linéaire : vecteur 2D sur le plan _x-y_.  
+  - Angular velocity : vecteur en direction **z**, rotation autour du centre de masse.  
+
+- On peut imaginer la direction comme **entrant dans l’écran**.  
+
+![[medias/angular2d.png]]  
+
+---
+
+## Simplification
+
+- Au lieu de manipuler un vecteur complet, on stocke simplement la **magnitude du composant z** :  
+```cpp
+float angularVelocity; // magnitude du vecteur en z
+```
+- Cela suffit pour gérer la rotation des objets en 2D tout en respectant la physique angulaire.
+    
+
+#tags/physics/angular, #motion/angular, #implementation/2d
+

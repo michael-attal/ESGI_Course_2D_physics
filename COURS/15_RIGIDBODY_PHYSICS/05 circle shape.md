@@ -1,73 +1,94 @@
 # Introduction
 
-All right. We are back. One of the things that I want to do is I want to be able to draw this shape, right? Is circle, this box. We are starting with circles now. So I want to be able to come and draw this new shape.  
+Nous revenons maintenant à l’étape suivante : être capable d’afficher les formes, en commençant par les cercles.  
+L’objectif est de dessiner visuellement les différentes géométries associées aux corps rigides.  
 
 # Removing Radius from Body
 
-There's just one thing that I want to quickly do. Do you remember how we have still the radius inside our body? Because we had that radius from the particle before. I have to go and remove this radius from the body. Our radius is only in the circle shape class. So we are going to come here quickly and just remove that radius from the body and just adapt our source code to account for the shape.  
+Première correction nécessaire : le rayon d’un corps n’appartient plus à la classe `Body`.  
+Ce rayon provenait de l’ancienne implémentation des particules ; désormais, seule la classe `CircleShape` possède un attribut `radius`.  
+Il faut donc :
 
-So this is no more. The radius comes from the shape. I'm saying 50 pixels radius in my circle shape. And of course, if I come here and I open my body dot H, I have to remove the radius from the body. And we're moving the radius from the body is going to create a couple of issues here. Especially if we go down, I think we have a problem because we are using the radius in this manual collision check with the boundaries of the window.  
+- supprimer l’attribut `radius` de `Body`,  
+- adapter le code de collision qui utilisait `body.radius`,  
+- faire en sorte que toutes les informations géométriques proviennent exclusivement de la forme.
+
+La suppression du rayon dans `Body` génère des erreurs, notamment dans le test de collision contre les limites de la fenêtre : ce code utilisait l’ancien `body.radius`. Il faut donc récupérer le rayon directement depuis la forme, lorsqu’elle est de type cercle.
 
 # Collision Check Update
 
-Remember this hack that we have right here? This thing was checking the boundaries of the window and for that we were using that particle radius that we had before. Which we don't have anymore. This radius needs to come from our shape. We have to test the geometry of the body that is in the circle shape.  
+Dans la boucle qui parcourt tous les corps, un test est ajouté :  
 
-So let's do this. I have a for loop that is looping all the bodies. And I am going to protect and say that if the body shape and then I have something called get type remember. So if the type of this shape of the body is equal to circle that in a narration type and I have if this is true, let me just wrap everything and let me just move all these things to the right of it.  
+- si la forme du corps existe,  
+- si son type est `CIRCLE`,  
+- alors on récupère un pointeur vers `CircleShape`, en le castant depuis le pointeur de base `Shape*`.
 
-And if this is true, then I have to test not the body radius, but the circle shape radius. And if this thing is true, I'm going to have to come here and create something called a circle shape, point or call circle shape. And this comes from my body shape.  
-
-So I'm going to have to get the circle shape. I might have to cast this thing. So I'm just going to do a nasty secast here. A circle shape pointer. So I am getting that circle shape from my body shape making sure that this is a circle shape.  
+Une fois ce cast effectué, toutes les références à `body.radius` sont remplacées par `circleShape->radius`.  
+Un remplacement global est effectué sur la section du code concernée.  
+Seuls les corps circulaires sont testés contre les frontières de la fenêtre.
 
 # Replacing Body Radius with Circle Radius
 
-And then do you see how I have all this body radius here? I'm going to replace all this body arrow radius by circle shape radius. So let me just quickly do a quick search and replace here. So between lines 76 and 89, let's search for body radius and replace by circle shape radius and the entire selection global.  
-
-Boom, there we go. So I just change quickly the body radius by the circle shape. Because I am making sure that I'm only trying to check objects of the type circle, right, shapes of the type circle here. Nothing else will check for this collision with the window. Only shapes of the type circle.  
+Le code du test de collision est donc entièrement mis à jour pour utiliser le rayon provenant de la forme.  
+Cela garantit que la logique repose sur l’architecture polymorphique, et non sur un attribut obsolète dans `Body`.  
 
 # Rendering Shapes
 
-So this is okay. Let me check something else here. We are passing the body radius in the draw function. So here is where we have to stop and think about how we can go and render this shapes.  
+Le même principe s’applique au rendu :  
+dans la boucle de dessin, on vérifie si la forme associée au corps est un cercle.  
+Si oui :
 
-I am going to say this. So in this for loop right here where I loop all the bodies, I am going to say if my body shape yet time if the type is equal to a circle. So only if it is circle, I'm going to go ahead and I'm going to close my statement. And I'm going to have here to do in the very near future. We're going to have to draw other types of shapes or shapes.  
+- on cast la forme vers `CircleShape`,  
+- on utilise son rayon,  
+- on dessine le cercle avec la méthode adaptée.
 
-So I am coming here and checking from that body. Only draw the bodies that have the shape circle. And let's think of how we can do that. I have to come here and say that I'm going to have a circle shape pointer circle. Same thing before comes from body shape. And this thing I have to cast.  
-
-And sure we could use a simplest plus modern cast but I'm just going to say circle shape pointer like this. So again, I am extracting that circle shape from my body and then I can use this shape right here. circle shape arrow radius because this circle shape indeed has arrays.  
+Pour l’instant, seuls les cercles sont dessinés. Les autres formes seront ajoutées plus tard.
 
 # Drawing and Rotation
 
-Okay, all good. So I think that takes care of our circles. So let me just quickly do a test. If we come here and we try to compile, I think that we'll do the job. Good. Let's see how those looks. We probably want to have a big shape with 50 pixels rate, right? So that makes sense.  
+On remplace `drawFilledCircle` par `drawCircle`, car ce dernier accepte un paramètre supplémentaire : l’angle de rotation.  
+Ce changement est important, car nous entrons dans le domaine des corps rigides capables de tourner.
 
-But something else that I want you to already come here and do is look. Sure, I can come here and draw a feel circle, but we are entering the realm of rigid bodies that can rotate. So I am going to come here and I'm going to change this draw feel circle by a simple draw circle.  
+La signature de la fonction impose :
 
-And the draw circle method we have to pass. Look at the parameters. An x, a y position, a radius and a float angle. So I can pass. I can specify the angle of rotation of that shape that I want to draw that circle.  
+- x  
+- y  
+- radius  
+- angle  
+
+On passe pour le moment un angle constant, par exemple `0.0f`, afin de tester le pipeline de rendu.
 
 # Implementing Rotation Test
 
-And this is going to be super handy for us because we want to start talking about rotation of rigid bodies. So let me just come here and try to do a couple things. So x and y. And then I have the circle shape radius and before the color, I have to pass an angle. So let's just say, for example, 0.0. So if my rotation of my circle is 0.0, let's see, we should not rotate.  
+Pour démontrer visuellement l’effet de l’angle, une variable statique `angle` est ajoutée dans la fonction de rendu.  
+À chaque appel de cette fonction :
 
-So we have this circle that is not filled. And we have that line. And you will see many two deep physics engines out there do exactly that. So if we try to render a circle with a rotation, we have a line to indicate where is that circle rotated.  
+- `angle` augmente légèrement (par exemple +0.01 radians),  
+- l’angle évolue de manière continue et persistante, grâce au mot-clé `static`.
 
-# Dynamic Rotation Example
-
-And let's even put that to test. So instead of 0.0, let me just come here and declare who does do a nasty thing here. So let's just say static angle equals to 0.0 or some declaring aesthetic variable. And I want to always before I leave my render function, I want to say angle plus equals 0.01, right?  
-
-This is radiance, of course. So let me just come here. Oops, I think I'm going to mistake this thing has to be slow angle. So I start at 0 and every time that I call my render, I increase by 0.01. And since this variable is static, it's going to persist this value, right? It's not going to erase. And right here, let me just pass that angle.  
+On transmet ensuite cet angle à la fonction qui dessine le cercle.  
+Le cercle est alors affiché avec une ligne indiquant son orientation, technique courante dans les moteurs physiques 2D.
 
 # Visualization of Rotation
 
-So I expect to see this angle increase by 0.01 radiance every time. Let's see how that looks. There you go. So now we have a way of determining and displaying the rotation of a shape.  
+Le résultat : un cercle tournant lentement grâce à l’incrémentation continue de l’angle.  
+Cette rotation n’est pas encore liée aux propriétés physiques du corps :
 
-Of course, this rotation that I have, this angle has nothing to do with my body yet, right? Our body, we still haven't declared the angle of rotation of the body, the velocity of rotation, the acceleration of the rotation. We're going to start to talk about this body properties, this angular properties in the next video.  
+- pas d’angle intrinsèque du corps,  
+- pas de vitesse angulaire réelle,  
+- pas d’accélération angulaire,  
+- pas de moment d’inertie.
+
+Ceci n’est qu’un test visuel pour valider la chaîne de rendu.
 
 # Angular Motion Preview
 
-But there is a way that we can just specify the angle of rotation of a circle when we can draw and we see the little line changing the angle. So we have an idea of where is that circle rotating.  
+La prochaine étape consiste à introduire les notions de mouvement angulaire :
 
-Having that line is very common. You will see libraries like box to the chipmunk to the any to the physics engine. They will have some debug mode. They will have this circle with this line to indicate the rotation of the circle.  
+- angle du corps,  
+- vitesse angulaire (*angular velocity*),  
+- accélération angulaire (*angular acceleration*),  
+- influence du moment d’inertie.
 
-But for us, I just wanted to show that we have now this option of drawing a circle passing an angle and that is going to be super handy for us now that we're going to start talking about.  
+Nous construirons progressivement la mécanique complète permettant aux corps rigides de tourner correctement, tout comme ils se déplacent en translation.
 
-How fast is the velocity changing of that rotation? So how fast is that angle changing the rotation? That is going to be our angular velocity. How fast is the acceleration of that change? So we're going to have an angular acceleration.  
-
-Do you see where we're going with this? So besides being able to move up and down, left and right with this linear movement, we're going to have now this idea of angular movement, right? Radians, how much do we change? We have an angular velocity, an angular acceleration. But this is the topic of our next conversation. Let's think about angular motion of weighted values.

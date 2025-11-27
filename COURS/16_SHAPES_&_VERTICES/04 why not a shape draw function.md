@@ -1,51 +1,37 @@
 # Quick Question
 
-All right, very quick question just before we move forward.  
-I want you to propose a quick exercise.  
-Look, as I came here in this render function that we have right now, several students they came to me and say, OK, Gustavo, what is going on?  
-Because we are going body by body, right? So rigid body by rigid body and then you are doing this very nasty text, right?
+- Objectif : proposer un exercice rapide pour réfléchir à la conception du rendu.  
+- Situation : dans la fonction `render()`, on effectue des tests pour chaque type de body (circle, box, polygon) et on dessine chaque forme manuellement.  
 
 ---
 
-# Render Function Logic
+## Render Function Logic
 
-If the body shape at type is equals equals circle, then we go when we draw a circle here.  
-If the body shape equals equals box, then we go when you draw a polygon.  
-Then we're probably going to have several other shapes, right?  
-If this shape is polygon, then we draw a polygon.  
-
----
-
-# The Question
-
-The question is Gustavo, why are you doing this?  
-Right? So why are you not using proper object oriented programming techniques?  
-Because if you want to draw a circle or if you want to draw a polygon, why don't you have a method inside the circle class called draw that knows how to draw a circle?  
-Why don't you have a method in the polygon class?  
-So you can just say shape, draw, and then the shape knows already how to go and draw itself, right?  
-This is the whole idea of polymer phism from object oriented programming, right?  
-So why are you not, why are you polluting and adding all this dirt here in the render function?  
-And why don't you just say shape, draw, and then each shape knows how to draw itself.  
+- Actuellement :  
+  - Si `body.shape.type == circle` → dessiner un cercle  
+  - Si `body.shape.type == box` → dessiner un polygone  
+  - Si `body.shape.type == polygon` → dessiner un polygone  
+- Plusieurs conditions dispersées dans le code.  
 
 ---
 
-# Object-Oriented Design Reflection
+## The Question
 
-And that is an absolutely great question, right?  
-I would always encourage you to think about the things we should think about, delegating the draw responsibility to the shape.  
-But my question is why didn't I do that?  
-And I want to send this over to you.  
-I want you to answer this question.  
+- Pourquoi ne pas utiliser le polymorphisme et déléguer la responsabilité du dessin à chaque shape ?  
+  - Exemple : `circle.draw()`, `polygon.draw()`  
+- L’idée : chaque objet connaît sa propre manière de se dessiner, ce qui rend le code plus propre et orienté objet.  
+- Question posée : pourquoi cette logique est-elle centralisée dans `render()` au lieu d’être dans chaque shape ?  
 
 ---
 
-# Exercise
+## Object-Oriented Design Reflection
 
-I want you to go to the discussion board and I want you to write one line or one paragraph explaining,  
-why do you think that I decided to put that logic and add right here outside in our render function?  
-Right, all this nasty dirty checks, if it is equals to circle, draw circle here.  
-If it is equal to shape, draw circle circle here.  
-Why am I drawing things here inside the render instead of drawing them inside our shape class?  
+- Encouragement à réfléchir sur la responsabilité du dessin : la shape devrait gérer son propre rendu.  
+- Question à résoudre : pourquoi cette approche n’a pas été utilisée ici ?  
 
-Go quickly, go to the discussion board, right?  
-One line, I want you to see if you already understand why I decided to do this.
+---
+
+## Exercise
+
+- Pourquoi le code actuel effectue ces vérifications dans la fonction `render()` plutôt que de déléguer le dessin aux classes de shapes ?  
+- Objectif : comprendre la décision de conception derrière cette approche dans la fonction de rendu.
