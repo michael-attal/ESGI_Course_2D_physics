@@ -13,11 +13,16 @@ struct Body{
 	float mass;
 	float invMass;
 	
+	
 	// angular
 	float rotation; //theta
 	float angularVelocity; // omega
 	float angularAcceleration; //alpha
+	float sumTorque;
 	
+	
+	float I; // moment of inertia (il existe des formules)
+	float invI;
 }
 
 void Body::IntegrateAngular(float dt)

@@ -5,14 +5,14 @@
 ```cpp
 struct Particle{
 	// linear motion
-	Vec2 position, velocity, accleration;
+	Vec2 position, velocity, acceleration;
 	Vec2 sumForces;
 	
 	// mass
 	float mass, invMass;
 	
 	// ANgular motion
-	float rotation
+	float rotation;
 	
 	// geometry of the rigid body
 	Shape* shape = NULL;

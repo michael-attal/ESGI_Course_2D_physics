@@ -1,1 +1,0 @@
-![[medias/32 linear & angulat velocity at point 2025-11-19 08.11.38.excalidraw]]
