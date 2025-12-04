@@ -1,0 +1,26 @@
+- vectors
+	- https://www.youtube.com/watch?v=br7tS1t2SFE
+- rigid bodies 
+	- https://www.toptal.com/game/video-game-physics-part-i-an-introduction-to-rigid-body-dynamics
+- collision
+	- https://www.toptal.com/game/video-game-physics-part-ii-collision-detection-for-solid-objects
+- constraints
+	- https://www.toptal.com/game/video-game-physics-part-iii-constrained-rigid-body-simulation
+- jacobian matrix
+	- https://www.youtube.com/watch?v=VmfTXVG9S0U
+	- https://www.youtube.com/watch?v=bohL918kXQk
+- linear algebra
+	- https://www.youtube.com/playlist?list=PLFD0EB975BA0CC1E0
+- matrices
+	- https://www.youtube.com/watch?v=xyAuNHPsq-g&list=PLFD0EB975BA0CC1E0&index=1
+- physic engine
+	- https://www.haroldserrano.com/blog/how-a-physics-engine-works-an-overview
+- soft body engine
+	- https://lisyarus.github.io/blog/posts/soft-body-physics.html
+- physics of jelly car (soft body)
+	- https://www.youtube.com/watch?v=3OmkehAJoyo
+- softs bodies
+	- https://www.youtube.com/watch?v=kyQP4t_wOGI
+- papers soft body simulation
+	- https://research.ncl.ac.uk/game/research/publications/Real-Time%20Deformable%20Soft-Body%20Simulation.pdf
+	- https://panoramx.ift.uni.wroc.pl/~maq/soft2d/howtosoftbody.pdf

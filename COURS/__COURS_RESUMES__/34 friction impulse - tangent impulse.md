@@ -8,7 +8,7 @@ void Contact::ResolveCollision(){
 	
 	float e = std::min(a->restitution, b->restitution);
 	// add friction (attribut ajouté dans struct Body)
-	float e = std::min(a->friction, b->friction);
+	float f = std::min(a->friction, b->friction);
 	
 	Vec2 ra = end - a->position;
 	Vec2 rb = start - b->position;
@@ -23,17 +23,17 @@ void Contact::ResolveCollision(){
 	((a->invMass+b->invMass)+ ra.Cross(normal)*ra.Cross(normal)* a->invI + rb.Cross(normal)*rb.Cross(normal)* b->invI);
 	Vec2 jN = impulseDirectionN * impulseMagnitudeN;
 	
-	// collision impulse along tngent
+	// collision impulse along tangent
 	Vec2 tangent = normal.Normal();
 	float vrelDotTangent = vRel.Dot(tangent);
 	const Vec2 impulseDirectionT = tangent;
-	const float impulseMagnitudeT = f * -(1+e) * vrelDotTangent / 
+	const float impulseMagnitudeT = f * -(1+f) * vrelDotTangent / 
 	((a->invMass+b->invMass)+ ra.Cross(tangent)*ra.Cross(tangent)* a->invI + rb.Cross(tangent)*rb.Cross(tangent)* b->invI);
 	Vec2 jT = impulseDirectionT * impulseMagnitudeT;
 	// combining tangent and normal impulses
 	Vec2 j = jN+jT;
 	a->ApplyImpulse(j, ra);
-	b->ApplyImpulse(-, rb);
+	b->ApplyImpulse(-j, rb);
 	
 }
 

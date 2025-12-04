@@ -44,4 +44,5 @@ Notions à implémenter  (a minima):
 - bonus intégrations d'un particle system et de soft bodies
 - bonus système de contraintes
 
-Le sujet du projet est libre, vous pouvez tout à fait
+
+![[medias/projet-20251202.png]]
