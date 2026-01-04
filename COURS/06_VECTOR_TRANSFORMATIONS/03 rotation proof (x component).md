@@ -147,7 +147,7 @@ Voici les grandes étapes à suivre :
 Indice clé : vous obtiendrez finalement la formule suivante :
 
 $$
-\boxed{y' = x\sin(\beta) + y\cos(\beta)\}
+\boxed{y' = x\sin(\beta) + y\cos(\beta)}
 $$
 
 ---
