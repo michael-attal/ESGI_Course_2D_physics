@@ -1,0 +1,1 @@
+![[medias/39 contraintes avec les rigid bodies 2025-12-14 09.09.29.excalidraw]]

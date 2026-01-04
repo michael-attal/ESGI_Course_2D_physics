@@ -1,0 +1,1 @@
+![[medias/48 solve violated velocity constraint 2025-12-17 11.29.56.excalidraw]]
