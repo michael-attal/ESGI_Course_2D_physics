@@ -1,6 +1,6 @@
 ## Contacts multiples et amélioration du SAT : référence, incident et clipping
 
-Lors de la séance précédente, nous avons identifié un cas fondamental en physique des collisions :  
+Nous avons identifié un cas fondamental en physique des collisions :  
 une collision peut produire **plusieurs points de contact simultanés**, notamment lorsque deux faces sont parallèles.  
 Dans ce contexte, résoudre les pénétrations **séquentiellement** (un point après l’autre) conduit à une solution instable et déséquilibrée.  
 

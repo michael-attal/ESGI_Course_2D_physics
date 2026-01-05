@@ -76,35 +76,24 @@ au lieu d’un simple `Contact&`.
 Les changements concernent :
 
 - `collision_detection.h`
-    
 - `collision_detection.cpp`
-    
 - toutes les fonctions de type :
-    
     - circle–circle,
-        
     - polygon–polygon,
-        
     - polygon–circle.
         
 
 Chaque fonction :
 
 - reçoit un vecteur de contacts en paramètre,
-    
 - crée localement un objet `Contact`,
-    
 - remplit ses champs (corps, points, normale, profondeur),
-    
 - **ajoute ce contact au vecteur via `contacts.push_back(contact)`**.
     
 
 À ce stade :
-
 - les collisions cercle–cercle continuent de produire un seul contact,
-    
 - les collisions polygone–polygone produisent encore un seul contact,
-    
 - mais l’architecture est prête à en gérer plusieurs.
     
 
@@ -113,23 +102,16 @@ Chaque fonction :
 Dans `world.cpp`, le moteur :
 
 - crée un vecteur `std::vector<Contact> contacts`,
-    
 - appelle la détection de collision qui remplit ce vecteur,
-    
 - parcourt ensuite **tous les contacts retournés**.
     
 
 Pour chaque contact :
-
 - un marqueur visuel est dessiné,
-    
 - le contact peut être ajouté à la liste des contraintes de pénétration (quand la résolution sera réactivée).
     
-
 Ainsi, le moteur est désormais capable de :
-
 - visualiser plusieurs points de contact,
-    
 - appliquer ultérieurement des impulsions **réparties équitablement** sur tous les points.
     
 

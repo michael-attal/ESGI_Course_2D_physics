@@ -9,7 +9,7 @@ class Constraint{
 		// nouveau type de data structure
 		// approche + dynamique avec MatMN et VecN
 		MatMN GetInvM(); // rows + cols
-		VecN vec; // only rows
+		VecN velocities; // only rows
 		void Solve();		
 };
 ```
