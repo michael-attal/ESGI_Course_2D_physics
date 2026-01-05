@@ -42,9 +42,9 @@ Le plan est défini par l’arête `(C0, C1)`.
 
 On calcule :
 - le vecteur direction `C1 - C0`,
-- puis sa normale (après normalisation).
+- puis on le normalise (après normalisation).
 
-Cette normale définit l’orientation du demi-espace :
+Ce vecteur définit l’orientation du demi-espace :
 - un point est **accepté** s’il se situe du bon côté du plan,
 - rejeté sinon.
 
@@ -54,8 +54,10 @@ Cette normale définit l’orientation du demi-espace :
 
 Pour les deux extrémités du segment incident :
 
-- `distance0 = dot(contactsIn[0] - C0, normal)`
-- `distance1 = dot(contactsIn[1] - C0, normal)`
+```cpp
+float dist0 = (contactsIn[0] - c0).Cross(normal);
+float dist1 = (contactsIn[1] - c0).Cross(normal);
+```
 
 Interprétation :
 - distance < 0 → point **derrière** le plan (conservé),
