@@ -1,3 +1,4 @@
+
 ---
 # Implémentation du SAT : calcul de la séparation entre polygones
 

@@ -1,3 +1,4 @@
+
 ---
 # Refactoring de `findMinimumSeparation` dans la classe Polygon
 

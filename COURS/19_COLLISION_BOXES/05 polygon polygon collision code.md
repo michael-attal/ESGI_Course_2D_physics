@@ -1,3 +1,4 @@
+
 ---
 # Implémentation du SAT appliquée à la collision de polygones
 

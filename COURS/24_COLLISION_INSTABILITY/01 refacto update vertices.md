@@ -18,9 +18,11 @@
 
 - Objectif : uniformiser la mise à jour des vertices pour toutes les formes.
 - Signature de la méthode :
-  ```cpp
+
+```cpp
   virtual void updateVertices(float angle, const Vec2& position) = 0;
 ```
+
 Chaque forme héritant de `Shape` doit implémenter cette méthode :
 
 - **PolygonShape** : recalcul des vertices à partir des vertices locales transformées par la rotation et la position.
