@@ -16,9 +16,9 @@
 
 # Impulsion comme force appliquée sur un temps
 
-- Relation : $ \text{Impulse} = F \cdot \Delta t $
+- Relation : $\text{Impulse} = F \cdot \Delta t$
 - Appliquer une force pendant un certain temps équivaut à **changer le momentum**.
-- En calcul continu : $ J = \int F(t) dt $
+- En calcul continu : $J = \int F(t) dt$
 
 ---
 
@@ -31,12 +31,12 @@
 
 # Réécriture avec masse et vitesse
 
-- $ F \cdot \Delta t = m \cdot a \cdot \Delta t = m \cdot \Delta v $
-- On définit l’impulsion par la lettre $ J $ :
+- $F \cdot \Delta t = m \cdot a \cdot \Delta t = m \cdot \Delta v$
+- On définit l’impulsion par la lettre $J$ :
   \[
-  J = m \cdot \Delta v
+  $J = m \cdot \Delta v$
   \]
-- Comme la masse est constante, $ J $ correspond à **un changement de vitesse**.
+- Comme la masse est constante, $J$ correspond à **un changement de vitesse**.
 
 ---
 

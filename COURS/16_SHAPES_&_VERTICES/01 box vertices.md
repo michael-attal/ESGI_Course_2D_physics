@@ -54,7 +54,7 @@ this->height = height;
         
     - Bottom Right : $(\frac{w}{2}, \frac{h}{2})$
         
-    - Bottom Left : (-\frac{w}{2}, \frac{h}{2}))
+    - Bottom Left : $(-\frac{w}{2}, \frac{h}{2}))$
         
 - Ordre : **top-left → clockwise**.
 
@@ -92,7 +92,7 @@ vertices.push_back({x, y});
         
     - `clone()` → copie du `BoxShape` avec mêmes dimensions.
         
-    - `getMomentOfInertia()` → I=112(w2+h2)∗mI = \frac{1}{12} (w^2 + h^2) * mI=121​(w2+h2)∗m
+    - `getMomentOfInertia()` → $I=112(w2+h2)∗mI = \frac{1}{12} (w^2 + h^2) * mI=121​(w2+h2)∗m$
         
 
 #tags/physics/inertia, #cpp/methods, #graphics/box
