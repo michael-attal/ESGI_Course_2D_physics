@@ -92,7 +92,7 @@ inverseMomentOfInertia = (momentOfInertia != 0.0f) ? 1.0f / momentOfInertia : 0.
 
 ```
 
-- Calcul de l’accélération angulaire : α=τI\alpha = \frac{\tau}{I}α=Iτ​  
+- Calcul de l’accélération angulaire : $α=τI\alpha = \frac{\tau}{I}α=Iτ​$  
     #tags/physics/mass, #physics/inertia, #cpp/calculation
     
 
@@ -116,11 +116,11 @@ void clearTorque() { sumTorque = 0.0f; }
 
 # Angular Integration Logic
 
-- Calcul de l’accélération angulaire : α=∑τ⋅inverseMomentOfInertia\alpha = \sum \tau \cdot \text{inverseMomentOfInertia}α=∑τ⋅inverseMomentOfInertia
+- Calcul de l’accélération angulaire : $$α=∑τ⋅inverseMomentOfInertia\alpha = \sum \tau \cdot \text{inverseMomentOfInertia}α=∑τ⋅inverseMomentOfInertia$$
     
 - Intégration :  
-    ω+=α⋅Δt\omega \mathrel{+}= \alpha \cdot \Delta tω+=α⋅Δt  
-    θ+=ω⋅Δt\theta \mathrel{+}= \omega \cdot \Delta tθ+=ω⋅Δt
+    $$ω+=α⋅Δt\omega \mathrel{+}= \alpha \cdot \Delta tω+=α⋅Δt$$  
+    $$θ+=ω⋅Δt\theta \mathrel{+}= \omega \cdot \Delta tθ+=ω⋅Δt$$
     
 - Réinitialisation du couple à chaque étape physique.  
     #tags/physics/angular, #math/integration, #cpp/implementation
@@ -138,8 +138,8 @@ virtual float getMomentOfInertia() const = 0;
 
 #TODO reecrire les formules
 - Formules :
-    - Cercle : I=12r2⋅mI = \frac{1}{2} r^2 \cdot mI=21​r2⋅m
-    - Rectangle : I=112(w2+h2)⋅mI = \frac{1}{12} (w^2 + h^2) \cdot mI=121​(w2+h2)⋅m
+    - Cercle : $$I=12r2⋅mI = \frac{1}{2} r^2 \cdot mI=21​r2⋅m$$
+    - Rectangle : $$I=112(w2+h2)⋅mI = \frac{1}{12} (w^2 + h^2) \cdot mI=121​(w2+h2)⋅m$$
     - Polygone : à implémenter (triangulation et somme des contributions)  
         #tags/physics/shapes, #cpp/virtual-functions, #physics/inertia
         
